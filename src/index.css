@@ -1,0 +1,451 @@
+body {
+  margin: 0;
+}
+
+
+h1, h2, h3, h4, h5, p{
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+  font-size: 16px; /* Base = 1rem = 16px */
+  font-family: 'Roboto', sans-serif;
+  color: #222;
+  line-height: 1.5;
+}
+
+/* Headings */
+h1 {
+  font-size: 6rem;    /* 96px */
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 3.75rem; /* 60px */
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 3rem;    /* 48px */
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 2rem;    /* 32px (lebih konsisten daripada 34px) */
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 1.5rem;  /* 24px */
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 1.25rem; /* 20px → opsional */
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Text Variants */
+.subtitle1 {
+  font-size: 1.125rem; /* 18px → biar beda sama body */
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.body1 {
+  font-size: 1rem;    /* 16px */
+  line-height: 1.6;
+}
+
+.body2 {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+}
+
+.buttonText {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.caption {
+  font-size: 0.75rem;  /* 12px */
+  line-height: 1.4;
+  color: #666;
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 kolom sama lebar */
+  gap: 1.5rem; /* gutter = 24px */
+  max-width: calc(12 * 1fr + 11 * 1.5rem); /* otomatis dari grid */
+  margin: 0 auto; /* center container */
+  padding: 0 4.5rem; /* margin kiri-kanan 72px */
+  box-sizing: border-box;
+}
+
+/* contoh class span kolom */
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-6 { grid-column: span 6; }
+.col-12 { grid-column: span 12; }
+
+
+
+.appLayout {
+  display: flex;
+  height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+.navSidebar {
+  width: 240px;
+  background-color: #191B20;
+  display: flex;
+  flex-direction: column; /* biar isi vertikal */
+  justify-content: space-between; /* pisah atas & bawah */
+  padding: 16px;
+}
+
+.navSidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1; /* biar ul isi ruang tengah */
+}
+
+.navSidebar ul li {
+  color: white;
+  margin-bottom: 12px;
+}
+
+/* ubah nanti */
+.navSidebar ul li .account{
+  background-color: white;
+}
+
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.navHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: white;          
+}
+
+.navHeader h1{
+  color: black;
+  margin: 0;
+}
+
+.navHeader ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* .navHeader ul li{
+  margin-right: 8px;
+} */
+
+.buttonPrimaryBlue, 
+.buttonPrimaryPurple {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none; /* hilangin underline link */
+  color: white;
+}
+
+.buttonPrimaryBlue {
+  background-color: #007BFF;
+}
+
+.buttonPrimaryBlue:hover {
+  background-color: #005FCC;
+}
+
+.buttonPrimaryPurple {
+  background-color: #8A38F5;
+}
+
+.buttonPrimaryPurple:hover {
+  background-color: #6E2CC4;
+}
+
+.buttonSecondaryBlue{
+  background-color: transparent;
+  border: #007AFF;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  color: #007AFF;
+  padding: 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+.buttonSecondaryBlue:hover{
+  background-color: transparent;
+  border: #0066CC;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  color: #0066CC;
+  padding: 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+
+.navHeader ul li button a{
+  text-decoration: none;
+}
+
+.cardRecent{
+  background-color: #23262E;
+  border-radius: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 16px;
+  padding-right: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardRecent ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* .cardRecent ul li{
+  margin-right: 8px;
+} */
+
+.cardRecent p{
+  color: white;
+}
+
+.cardRecent .buttonIcon{
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+
+.cardRecent .buttonIcon:hover{
+  background-color: #383D47;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.cardRecent .buttonIcon .icon{
+  width: 20px;
+  height: 20px;
+}
+
+
+.modalOverlay {
+  width: 160px;
+  background: #383D47;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 9999; /* biar nongol di atas card */
+  animation: fadeIn 0.15s ease-out;
+}
+
+/* isi menu */
+.modalOverlayMenu {
+  padding: 4px;
+}
+
+.modalOverlayMenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: start;
+}
+
+.modalOverlayMenu li {
+  margin: 2px 0;
+  display: block;     /* penting: biar ikut full width */
+  width: 100%;        /* biar ngikutin 160px parent */
+}
+
+.buttonWithIcon {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: white;;
+  transition: background 0.2s;
+  box-sizing: border-box; 
+}
+
+.buttonWithIcon:hover {
+  background: #4C515C;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.landingContent{
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+.landingContent h3{
+  margin-bottom: 0.5rem;
+}
+
+.landingContent p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.landingContent .landingRow{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.landingContent .landingRow p{
+  margin: 0;
+  text-align: center;
+}
+
+
+.mediumButton{
+  width: 100px;
+  height: 40px;
+}
+
+.largeButton{
+  width: 200px;
+  height: 40px;
+}
+
+
+.authContent{
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: start;
+  height: 100vh;
+}
+
+.authContent p.subtitle1 {
+  margin: 0;
+  margin-bottom: 0.25rem;
+  text-align: left;
+}
+
+
+.authContent h3 {
+  margin-bottom: 0.5rem;
+}
+
+.authContent .authForm{
+  display: flex;
+  flex-direction: column;
+}
+
+.authContent .authForm p {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.authContent .authForm form{
+  display: flex;
+  flex-direction: column;
+}
+
+/* animasi */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width:400px) {
+  .cardRecent{
+    flex-direction: column;
+    align-items: left;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .navHeader ul{
+    display: none;
+  }
+
+  /* ganti jadi hamburger menu */
+
+}
