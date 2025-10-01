@@ -8,7 +8,7 @@ function LandingPage(){
 
     return(
        <div className="landingContent">
-        <h3>Your goals, One Checkmark Away</h3>
+        <h3 className="text-red-600">Your goals, One Checkmark Away. *And Your D is Small*</h3>
         <p>your personal task note and to do list</p>
         <div className="landingRow">
             <button className="buttonSecondaryBlue mediumButton" onClick={() => navigate("/login")}>Log In</button>
