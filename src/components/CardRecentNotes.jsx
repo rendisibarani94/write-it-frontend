@@ -3,7 +3,7 @@ import iconActionMenu from '../assets/icon/icon-actionMenu.svg';
 import iconTrashBin from '../assets/icon/icon-trashBin.svg';
 import iconEdit from '../assets/icon/icon-edit.svg';
 
-function CardRecentNotes() {
+function CardRecentNotes({note, onClick}) {
   const [showPopover, setShowPopover] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const menuRef = useRef(null);
@@ -38,8 +38,8 @@ function CardRecentNotes() {
   }, []);
 
   return (
-    <div className="cardRecent">
-      <p>My shopping list 1</p>
+    <div className="cardRecent" onClick={onClick}>
+      <p>{note.title}</p>
       <ul>
         <li className="actionMenuWrapper">
           <button
