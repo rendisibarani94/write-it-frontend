@@ -29,7 +29,7 @@ function LandingPage(){
             <p className="text-black">
                 your personal task note and to do list
             </p>    
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-5">
                 <button
                 className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition"
                 onClick={() => navigate("/login")}
