@@ -11,7 +11,7 @@ function SectionNote({ onSelectNote }) {
 
   return (
     <div>
-      <h4>Your Recent Notes</h4>
+      <h5 className="text-black">Your Recent Notes</h5>
       <button>New Notes</button>  
       {notes.map((note) => (
         <CardRecentNotes

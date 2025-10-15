@@ -1,27 +1,28 @@
-import { useState, useRef, useEffect } from 'react';
-import iconActionMenu from '../assets/icon/icon-actionMenu.svg';
-import iconTrashBin from '../assets/icon/icon-trashBin.svg';
-import iconEdit from '../assets/icon/icon-edit.svg';
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import iconActionMenu from "../assets/icon/icon-actionMenu.svg";
+import iconTrashBin from "../assets/icon/icon-trashBin.svg";
+import iconEdit from "../assets/icon/icon-edit.svg";
 
-function CardRecentNotes({note, onClick}) {
+function CardRecentNotes({ note }) {
+  const navigate = useNavigate();
   const [showPopover, setShowPopover] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
-  // toggle popover dan hitung posisi button
-  const handleToggle = () => {
+  const handleToggle = (e) => {
+    e.stopPropagation();
     if (!showPopover && buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
       setPosition({
-        top: rect.bottom + window.scrollY + 6, // muncul di bawah tombol
-        left: rect.right - 160 + window.scrollX, // align kanan (160 = width popover)
+        top: rect.bottom + 6,
+        left: rect.right - 160,
       });
     }
     setShowPopover(!showPopover);
   };
 
-  // klik di luar -> tutup popover
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -37,17 +38,26 @@ function CardRecentNotes({note, onClick}) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Klik card -> buka detail Note
+  const handleOpenDetail = () => {
+    navigate(`/home/note/${note.id}`);
+  };
+
   return (
-    <div className="cardRecent" onClick={onClick}>
-      <p>{note.title}</p>
+    <div
+      className="relative cardRecent cursor-pointer bg-neutral-800 p-4 rounded-xl hover:bg-neutral-700 transition-colors duration-200 flex justify-between items-center"
+      onClick={handleOpenDetail}
+    >
+      <p className="text-gray-100 font-medium truncate">{note.title}</p>
+
       <ul>
         <li className="actionMenuWrapper">
           <button
             ref={buttonRef}
             onClick={handleToggle}
-            className="buttonIcon"
+            className="buttonIcon p-2 hover:bg-neutral-700 rounded-full"
           >
-            <img className="icon" src={iconActionMenu} alt="action menu" />
+            <img className="icon w-5 h-5" src={iconActionMenu} alt="action menu" />
           </button>
         </li>
       </ul>
@@ -55,24 +65,36 @@ function CardRecentNotes({note, onClick}) {
       {showPopover && (
         <div
           ref={menuRef}
-          className="modalOverlay"
+          className="absolute z-50 bg-neutral-900 border border-neutral-700 rounded-xl shadow-lg"
           style={{
-            position: "absolute",
             top: `${position.top}px`,
             left: `${position.left}px`,
           }}
+          onClick={(e) => e.stopPropagation()} // biar klik menu gak buka detail
         >
-          <div className="modalOverlayMenu">
-            <ul>
+          <div className="modalOverlayMenu p-2">
+            <ul className="flex flex-col gap-1">
               <li>
-                <button className="buttonWithIcon">
-                  <img className="icon" src={iconEdit} alt="edit" />
+                <button
+                  className="buttonWithIcon flex items-center gap-2 px-3 py-2 w-full hover:bg-neutral-800 rounded-md text-sm text-gray-200"
+                  onClick={() => {
+                    setShowPopover(false);
+                    alert("Edit Note belum diimplementasi");
+                  }}
+                >
+                  <img className="icon w-4 h-4" src={iconEdit} alt="edit" />
                   <span>Edit Name</span>
                 </button>
               </li>
               <li>
-                <button className="buttonWithIcon">
-                  <img className="icon" src={iconTrashBin} alt="trash bin" />
+                <button
+                  className="buttonWithIcon flex items-center gap-2 px-3 py-2 w-full hover:bg-neutral-800 rounded-md text-sm text-red-400"
+                  onClick={() => {
+                    setShowPopover(false);
+                    alert("Delete Note belum diimplementasi");
+                  }}
+                >
+                  <img className="icon w-4 h-4" src={iconTrashBin} alt="trash bin" />
                   <span>Delete</span>
                 </button>
               </li>
@@ -85,29 +107,3 @@ function CardRecentNotes({note, onClick}) {
 }
 
 export default CardRecentNotes;
-
-
-/* 
-
-import { Link } from "react-router-dom";
-
-function CardRecent() {
-  return (
-    <Link to="/detail" className="cardRecent">
-      <p>My shopping list</p>
-      <ul>
-        <li>
-          <button onClick={(e) => e.preventDefault()}>edit name</button>
-        </li>
-        <li>
-          <button onClick={(e) => e.preventDefault()}>delete</button>
-        </li>
-      </ul>
-    </Link>
-  );
-}
-
-export default CardRecent
-
-
-*/

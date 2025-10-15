@@ -11,7 +11,7 @@ function SectionToDo({ onSelectToDo }) {
 
   return (
     <div>
-      <h4>Your Recent To Do</h4>
+      <h5 className="text-black">Your Recent To Do</h5>
       <button>Add To Do</button>
       {todos.map((todo) => (
         <CardRecentToDo
